@@ -1,6 +1,15 @@
 
 # Momo Mobile Documentation
 
+Proyek Flutter ini kini dipisahkan dari backend. Backend berada di folder  bernama momo-api.
+
+## Project Structure
+
+- Mobile app: momo-mobile
+  baca file yang ada di folder .ai
+- Backend API: momo-api
+  baca file yang ada di folder .ai
+
 This starter documentation was generated as a foundation.
 
 ## Documentation

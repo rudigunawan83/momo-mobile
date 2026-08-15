@@ -1,0 +1,676 @@
+# S momo-mobile — MASTER PROMPT & AI RULES
+
+## Project Overview
+
+Nama aplikasi: **Momo**
+Platform: **Android Mobile App**
+Framework: **Flutter (Latest Stable)**
+Architecture: **Clean Architecture + Feature Based Modular Structure**
+Target User: **Store Assistant / SPG / Fashion Store Staff**
+Industry: **Fashion Retail / Department Store / Multi Brand Retail**
+
+Aplikasi ini digunakan oleh store assistant untuk:
+
+* Scan barcode fashion item
+* Melihat detail produk secara cepat
+* Melihat promo aktif
+* Mengecek stock tersedia
+* Melihat rekomendasi produk
+* Membantu customer secara real-time
+* Mendapat insight penjualan
+* Mendapat AI recommendation untuk upselling
+* Monitoring performa toko
+
+---
+
+# MASTER AI PROMPT
+
+Gunakan prompt berikut untuk AI coding assistant seperti ChatGPT, Cursor AI, Claude, Gemini, Copilot, atau Devin.
+
+---
+
+# FLUTTER MASTER PROMPT
+
+You are a world-class senior Flutter mobile architect and UI/UX engineer.
+
+Build a professional enterprise-grade mobile application called "Sales Assistant App" for Android devices.
+
+This app is used by fashion retail store assistants to scan products, view product information, check stock, see promotions, and assist customers in-store.
+
+The application must follow these strict requirements:
+
+## Tech Stack
+
+* Flutter latest stable
+* Dart latest stable
+* Clean Architecture
+* Feature-based folder structure
+* Riverpod for state management
+* GoRouter for routing
+* Dio for API networking
+* Freezed + Json Serializable
+* Flutter Hooks
+* Responsive UI
+* Material 3
+* Local storage using Hive
+* Secure token using flutter_secure_storage
+* Barcode scanner using mobile_scanner
+* Infinite scroll & pagination support
+* Dark mode support
+* Offline-first capability
+* Modular reusable components
+* Internationalization ready
+* Performance optimized
+* Production-ready code
+
+## Design Style
+
+Design must look:
+
+* Premium
+* Enterprise-grade
+* Modern retail dashboard
+* Elegant black & gold accent
+* Clean white minimalism
+* Smooth rounded corners
+* Soft shadow
+* Luxury fashion retail aesthetic
+* Similar quality to Shopify POS, Zara internal app, and Apple retail apps
+
+## Main Theme
+
+Primary Color:
+
+* Gold #D89B3D
+* Black #111111
+* White #FFFFFF
+
+Secondary:
+
+* Soft Gray
+* Warm Beige
+* Luxury Gradient
+
+Typography:
+
+* Modern sans-serif
+* Bold section headers
+* Elegant spacing
+* Minimal clutter
+
+## Application Features
+
+### 1. Authentication
+
+* Login
+* Biometric login
+* Store selection
+* Session management
+
+### 2. Home Dashboard
+
+Design inspired by premium retail intelligence dashboard.
+
+Home screen contains:
+
+* Greeting section
+* Search bar
+* Hero banner
+* AI assistant shortcut
+* Quick menu grid
+* Sales analytics cards
+* Notification badge
+* Restock alerts
+* Promo Aktif
+* Product recommendation
+* Customer loyalty
+* Live performance cards
+* Bottom navigation
+
+The layout must closely resemble modern enterprise retail dashboard apps.
+
+## Home UI Requirements
+
+### Top Section
+
+* Company logo
+* Store intelligence title
+* Notification icon
+* Chat icon
+* Search field
+* Quick scan shortcut
+
+### Hero Banner
+
+* Promotional dashboard card
+* Fashion analytics illustration
+* AI robot assistant illustration
+* CTA button
+* Smooth gradient
+
+### Quick Feature Grid
+
+Use rounded cards with minimalist icons.
+
+Features:
+
+* Promo Aktif
+* RFID Stock Tracking
+* AI Assistant
+* Restock Alert
+* Expired Product Alert
+* Supplier Performance
+* Purchase Order
+* Sales Analytics
+* Customer Loyalty
+* Product Recommendation
+* Smart Discount
+* More Features
+
+### Live Store Performance Section
+
+Cards:
+
+* Sales
+* Transactions
+* Products Sold
+* Stock Available
+
+Each card has:
+
+* Trend chart
+* Growth percentage
+* Modern mini analytics
+
+### Bottom Navigation
+
+* Home
+* Features
+* Scan
+* Reports
+* Profile
+
+Center scan button must be highlighted with floating premium design.
+
+---
+
+## 3. Barcode Scan Feature
+
+Design inspired by futuristic fashion scanner app.
+
+### Scan Screen Requirements
+
+Scanner page must include:
+
+#### Camera Scanner Area
+
+* Large camera preview
+* Barcode overlay frame
+* Smooth scan animation
+* Gold scanning line
+* Dark premium background
+
+#### Scanner Controls
+
+* Flash toggle
+* History button
+* Help button
+* Scan mode switch
+
+#### Product Detection
+
+When barcode detected:
+
+* Show bottom sheet result
+* Product image
+* Product name
+* Product price
+* Active promo
+* Available sizes
+* Stock status
+* CTA button
+
+#### Detail Poduk Page
+
+Must contain:
+
+* Large fashion image
+* Product name
+* SKU / article number
+* Price
+* Promo countdown
+* Product information
+* Available size chips
+* Add to cart button
+* Similar products button
+* Favorite button
+
+#### Promo Page
+
+Show:
+
+* Buy 2 Get 1
+* Cashback
+* Member discount
+* Weekend special
+* Top spender reward
+
+Use luxury fashion visual style.
+
+#### History Page
+
+Show previous scan history with:
+
+* Product image
+* Scan timestamp
+* Favorite toggle
+* Quick reopen detail
+
+#### Dark Mode
+
+Create elegant black luxury mode.
+
+---
+
+## Architecture Rules
+
+Use this exact folder structure:
+
+lib/
+├── core/
+│    ├── constants/
+│    ├── theme/
+│    ├── network/
+│    ├── storage/
+│    ├── widgets/
+│    ├── utils/
+│    ├── services/
+│    └── extensions/
+│
+├── features/
+│    ├── auth/
+│    ├── dashboard/
+│    ├── scanner/
+│    ├── product/
+│    ├── analytics/
+│    ├── promotion/
+│    ├── notification/
+│    ├── ai_assistant/
+│    └── profile/
+│
+├── shared/
+│    ├── widgets/
+│    ├── models/
+│    └── components/
+│
+├── app/
+│    ├── routes/
+│    ├── providers/
+│    └── app.dart
+│
+└── main.dart
+
+---
+
+## Coding Rules
+
+Strict rules:
+
+* No bad UI
+* No messy code
+* No gigantic widgets
+* No duplicated logic
+* No business logic inside widgets
+* Use repository pattern
+* Use immutable state
+* Use const widget whenever possible
+* Optimize rebuilds
+* Avoid unnecessary packages
+* Use proper naming conventions
+* Use extension methods
+* Create reusable design system
+* Use loading skeleton
+* Use graceful error handling
+* Use responsive sizing
+* Use modular widget composition
+
+---
+
+## Performance Rules
+
+Must optimize for:
+
+* Fast startup
+* Low memory usage
+* Smooth 60 FPS animation
+* Minimal rebuilds
+* Lazy loading
+* Efficient API calls
+* Smart image caching
+* Pagination
+* Offline cache
+
+---
+
+## AI Assistant Module
+
+Include AI assistant features:
+
+* Product recommendation
+* Upselling suggestion
+* Cross-selling recommendation
+* Customer interaction help
+* Smart response suggestion
+* Store insight summary
+* Stock recommendation
+* Promotion recommendation
+
+AI must be lightweight and token-efficient.
+
+---
+
+## UI Animation
+
+Use subtle animations only:
+
+* Fade transition
+* Smooth bottom sheet
+* Floating scan button
+* Skeleton loading
+* Smooth card hover
+* Scan animation line
+
+Avoid over-animation.
+
+---
+
+## Security Rules
+
+* Secure token storage
+* API interceptor
+* Session expiration handling
+* Request retry
+* Secure environment config
+* SSL-ready architecture
+
+---
+
+## Output Expectations
+
+Generate:
+
+* Complete production-ready Flutter code
+* Reusable widgets
+* Models
+* Repositories
+* API layer
+* State management
+* Navigation
+* Theme system
+* Dummy data
+* Beautiful UI
+* Clean architecture implementation
+
+Never generate prototype-level code.
+Everything must be scalable and enterprise-ready.
+
+---
+
+# AI RULES FILE
+
+Buat file berikut pada project:
+
+```txt
+.ai-rules
+```
+
+Isi file:
+
+# AI RULES — SALES ASSISTANT APP
+
+## CORE PRINCIPLES
+
+1. Always prioritize clean architecture.
+2. Always prioritize scalability.
+3. Always prioritize maintainability.
+4. Always prioritize performance.
+5. Never generate messy code.
+6. Never generate duplicated widgets.
+7. Never place business logic inside UI.
+8. Always use reusable widgets.
+9. Always use strongly typed models.
+10. Always optimize rebuild performance.
+
+---
+
+## FLUTTER RULES
+
+* Use Flutter latest stable
+* Use Riverpod
+* Use GoRouter
+* Use Dio
+* Use Freezed
+* Use Json Serializable
+* Use Material 3
+* Use feature-first architecture
+* Use const constructors
+* Use extension methods
+* Use stateless widgets whenever possible
+* Avoid StatefulWidget unless necessary
+
+---
+
+## UI RULES
+
+* Use luxury fashion retail style
+* Use rounded corners
+* Use premium spacing
+* Use minimal clutter
+* Use elegant typography
+* Use black and gold accents
+* Use clean white backgrounds
+* Maintain visual consistency
+
+---
+
+## COMPONENT RULES
+
+* Maximum 200 lines per widget file
+* Split large widgets into smaller widgets
+* Create shared design system
+* Create reusable cards
+* Create reusable buttons
+* Create reusable loaders
+* Create reusable app bars
+
+---
+
+## PERFORMANCE RULES
+
+* Minimize widget rebuilds
+* Use pagination
+* Use image caching
+* Use lazy loading
+* Use skeleton loading
+* Use debounce search
+* Cache API responses
+* Avoid unnecessary API calls
+
+---
+
+## API RULES
+
+* Use repository pattern
+* Separate datasource layer
+* Use DTO mapping
+* Handle all exceptions
+* Use interceptor
+* Retry failed request safely
+* Use typed responses
+
+---
+
+## TOKEN EFFICIENCY RULES
+
+These rules are mandatory to reduce AI token usage.
+
+1. Never regenerate unchanged files.
+2. Only modify requested modules.
+3. Reuse existing components.
+4. Avoid generating long explanations.
+5. Avoid unnecessary comments.
+6. Use concise implementation.
+7. Prefer reusable helper functions.
+8. Avoid repeated imports.
+9. Generate only relevant files.
+10. Do not regenerate assets.
+11. Do not regenerate models if unchanged.
+12. Avoid verbose widget trees.
+13. Use shared components.
+14. Avoid unnecessary abstraction.
+15. Prefer composition over duplication.
+
+---
+
+## AI RESPONSE RULES
+
+When generating code:
+
+* Focus only on requested feature.
+* Return only changed files.
+* Avoid reprinting full project.
+* Avoid unnecessary markdown.
+* Keep answers concise.
+* Prioritize production code.
+* Never create fake APIs.
+* Never create fake architecture.
+* Use realistic enterprise structure.
+
+---
+
+## SCANNER RULES
+
+* Optimize camera performance
+* Prevent duplicate scan trigger
+* Use scan cooldown
+* Handle low light mode
+* Support barcode and QR
+* Provide haptic feedback
+* Use smooth scan overlay
+
+---
+
+## OFFLINE RULES
+
+* Cache latest scans
+* Cache latest products
+* Queue failed requests
+* Sync when online
+* Use lightweight local database
+
+---
+
+## DESIGN SYSTEM RULES
+
+* Maintain consistent spacing
+* Maintain consistent icon size
+* Maintain consistent typography
+* Use shared color palette
+* Use responsive sizing
+* Avoid inconsistent layout
+
+---
+
+# RECOMMENDED PACKAGES
+
+## Essential Packages
+
+```yaml
+dependencies:
+  flutter_riverpod:
+  hooks_riverpod:
+  flutter_hooks:
+  go_router:
+  dio:
+  freezed_annotation:
+  json_annotation:
+  flutter_screenutil:
+  cached_network_image:
+  shimmer:
+  mobile_scanner:
+  flutter_secure_storage:
+  hive:
+  hive_flutter:
+  connectivity_plus:
+  intl:
+  google_fonts:
+  lottie:
+```
+
+---
+
+# RECOMMENDED FEATURES ROADMAP
+
+## Phase 1
+
+* Authentication
+* Dashboard
+* Barcode scanner
+* Detail Poduk
+* Promo page
+* Scan history
+
+## Phase 2
+
+* AI recommendation
+* Loyalty integration
+* Push notification
+* Offline sync
+* Analytics dashboard
+
+## Phase 3
+
+* Voice AI assistant
+* RFID integration
+* Smart stock prediction
+* Customer behavior AI
+* Real-time store monitoring
+
+---
+
+# UX BEST PRACTICES
+
+* Maximum 3 taps for important actions
+* Fast scanning flow
+* Large CTA buttons
+* Readable font sizes
+* Strong contrast
+* Smooth transitions
+* Easy one-hand usage
+* Bottom-focused navigation
+
+---
+
+## token efficiency rules
+
+Only generate changed files.
+Never rewrite full widgets unless necessary.
+Avoid long explanations.
+Use existing components first.
+Prefer patch updates.
+
+---
+
+
+# FINAL GOAL
+
+The application must feel like:
+
+* Enterprise fashion retail assistant
+* Luxury modern retail app
+* AI-powered store companion
+* Fast and responsive scanner app
+* Premium Android application
+* Production-grade enterprise software
+
+
