@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'app/app.dart';
+import 'core/config/env_config.dart';
 
-import 'presentation/widgets/momo_character_demo.dart';
-
-Future<void> main() async {
+void main() async {
+  // Initialize Flutter bindings
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MomoApp());
-}
+  // Initialize environment configuration
+  // Default to development, can be overridden with flavor
+  await EnvConfig.init(environment: 'development');
 
-class MomoApp extends StatelessWidget {
-  const MomoApp({super.key});
+  // TODO: Initialize services
+  // - Firebase (optional)
+  // - Local storage (Isar)
+  // - Logger
+  // - Analytics
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Momo AI Companion',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.cyan,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
-      home: const MomoCharacterDemo(),
-    );
-  }
+  runApp(
+    // Wrap dengan ProviderScope untuk Riverpod
+    const ProviderScope(
+      child: MomoApp(),
+    ),
+  );
 }

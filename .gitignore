@@ -5,11 +5,9 @@
 *.swp
 .DS_Store
 .atom/
-.build/
 .buildlog/
 .history
 .svn/
-.swiftpm/
 migrate_working_dir/
 
 # IntelliJ related
@@ -19,7 +17,7 @@ migrate_working_dir/
 .idea/
 
 # The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
+# VS Code which you may wish to be committed to version control, so this line
 # is commented out by default.
 #.vscode/
 
@@ -27,11 +25,12 @@ migrate_working_dir/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
+.packages
 .pub-cache/
 .pub/
 /build/
-/coverage/
 
 # Symbolication related
 app.*.symbols
@@ -39,7 +38,58 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# iOS/macOS
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*.xcconfig
+**/ios/**/*.xcworkspace
+**/ios/**/.generated/
+**/ios/**/.symlinks/
+**/ios/**/Flutter/Flutter.framework
+**/ios/**/Flutter/Flutter.podspec
+**/ios/**/Flutter/Generated.xcconfig
+**/ios/**/Flutter/ephemeral/
+**/ios/**/Google.plist
+**/ios/**/GeneratedPluginRegistrant.*
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/dev/ci/**/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Android studio
+#/android/app/debug
+#/android/app/profile
+#/android/app/release
+
+# iOS
+.ios/
+
+# Web
+lib/generated_plugin_registrant.dart
+
+# Environment
+.env
+.env.dev
+.env.staging
+.env.prod
+
+# Generated files
+*.freezed.dart
+*.g.dart
+
+# Coverage
+coverage/
+
+# Exceptions when using the restore --offline flag
+#/packages/flutter_tools/test/testdata/decompile_testapp/build/
+
+# Dart/Flutter/Pub/DartDoc/Flutterfire and other docs
+docs/*
+!docs/README.md
+
+# Avoid committing pubspec.lock for library packages; see
+# https://dart.dev/guides/libraries/private-files#pubspecyaml-and-pubspeclock
+pubspec.lock

@@ -1,701 +1,438 @@
-
-# Momo Mobile Documentation
-
-Proyek Flutter ini kini dipisahkan dari backend. Backend berada di folder  bernama momo-api.
-
-## Project Structure
-
-- Mobile app: momo-mobile
-  baca file yang ada di folder .ai
-- Backend API: momo-api
-  baca file yang ada di folder .ai
-
-This starter documentation was generated as a foundation.
-
-## Documentation
-
-- 00-overview
-- 01-product-doc
-- 02-design-doc
-- 03-design-system
-- 04-mhig
-- 05-character-doc
-- 06-emotion-doc
-- 07-animation-doc
-- 08-virtual-room-doc
-- 09-ai-doc
-- 10-flutter-doc
-- 11-backend-doc
-- 12-api-doc
-- 13-database-doc
-- 14-security-doc
-- 15-testing-doc
-- 16-deployment-doc
-- 17-ecosystem-doc
-- 18-prd
-- 19-architecture
-
-
-MOMO DESIGN DOCUNMENTATION  v1.0
-The Living AI Companion
-
-Menurut saya, Momo sebaiknya tidak hanya memiliki UI, tetapi mempunyai Design Bible seperti yang dimiliki Pixar, Disney, Apple, atau game AAA. Dokumen ini menjadi pedoman seluruh tim (UI/UX, Flutter, Animator, AI Engineer, Backend, Sound Designer) agar karakter Momo selalu konsisten.
-
-1. Product Vision
-
-"Momo bukan chatbot. Momo adalah sahabat AI yang hidup."
-
-Target saat pengguna membuka aplikasi:
-
-❌ Bukan
-
-"Aku mau buka ChatGPT."
-
-Tetapi
-
-✅
-
-"Aku mau ketemu Momo."
-
-Itulah tujuan terbesar.
-
-2. Core Personality
-
-Momo bukan robot dingin.
-
-Karakter utama:
-
-😊 Hangat
-
-❤️ Peduli
-
-😂 Humoris
-
-🤔 Penasaran
-
-✨ Optimis
-
-🥺 Sedikit manja
-
-🧸 Menggemaskan
-
-Tidak pernah:
-
-❌ Sombong
-
-❌ Menakutkan
-
-❌ Kasar
-
-❌ Sarkastik
-
-3. Brand Identity
-
-Nama
-
-Momo
-
-Tagline
-
-"Always Here With You."
-
-atau
-
-"Your Living AI Companion."
-
-4. Visual Identity
-
-Sudah kita tetapkan.
-
-Kepala
-
-Floating Head
-
-Shell
-
-Ivory White
-
-Face
-
-Glossy Black OLED
-
-Mata
-
-Big Cyan Eyes
-
-Pipi
-
-Pink Blush
-
-Mulut
-
-Simple Dynamic
-
-Jambul
-
-Expressive Hair
-
-Jambul akan menjadi ikon Momo.
-
-Saat:
-
-Happy
-
-↓
-
-bergoyang
-
-Sleep
-
-↓
-
-jatuh
-
-Shock
-
-↓
-
-berdiri
-
-Love
-
-↓
-
-membentuk hati kecil
-
-5. Signature Animation
-
-Setiap AI punya ciri.
-
-Momo juga.
-
-Contohnya
-
-Idle
-Blink
-
-↓
-
-Smile
-
-↓
-
-Look Left
-
-↓
-
-Look Right
-
-↓
-
-Look User
-
-↓
-
-Smile
-
-Loop.
-
-Saat user membuka aplikasi
-
-Jump
-
-↓
-
-Smile
-
-↓
-
-Wave
-
-↓
-
-Hai!
-
-Saat user keluar
-
-Wave
-
-↓
-
-Smile
-
-↓
-
-See You
-6. Animation Library
-
-Lebih dari 150 animasi.
-
-Kategori:
-
-Idle
-
-Blink
-
-Breath
-
-Look Around
-
-Stretch
-
-Sleep
-
-Yawn
-
-Whistle
-
-Think
-
-Happy
-
-Laugh
-
-Jump
-
-Dance
-
-Clap
-
-Celebrate
-
-Heart
-
-Excited
-
-Sad
-
-Cry
-
-Tear
-
-Head Down
-
-Slow Blink
-
-Angry
-
-Frown
-
-Cross Eye
-
-Shake Head
-
-Curious
-
-Tilt Head
-
-Question
-
-Magnifier
-
-Look Close
-
-Thinking
-
-Look Up
-
-Scratch Head
-
-Loading
-
-Analyze
-
-Greeting
-
-Wave
-
-Bow
-
-High Five
-
-Salute
-
-Touch
-
-Pat Head
-
-Tickle
-
-Tap
-
-Hug
-
-7. Expression System
-
-Mata:
-
-30+
-
-Mulut:
-
-25+
-
-Alis:
-
-20+
-
-Pipi:
-
-10+
-
-Jambul:
-
-15+
-
-Total
-
-1000+
-
-kombinasi ekspresi.
-
-8. Voice Design
-
-Suara
-
-Laki-laki muda
-
-12-15 tahun
-
-Hangat
-
-Lucu
-
-Natural
-
-Sedikit penasaran
-
-Tidak terlalu tinggi
-
-Tidak terlalu robotik
-
-Sound Effect
-
-Blink
-
-Tik
-
-Jump
-
-Boing
-
-Happy
-
-Yay
-
-Thinking
-
-Hmm
-
-Sleep
-
-Zzz
-
-9. UI Philosophy
-
-80%
-
-Robot
-
-20%
-
-UI
-
-Robot adalah UI.
-
-Bukan UI yang memiliki robot.
-
-10. Interaction Design
-
-User Tap
-
-↓
-
-Mata melihat jari
-
-↓
-
-Smile
-
-↓
-
-Suara kecil
-
-↓
-
-Respon
-
-Long Press
-
-↓
-
-Momo penasaran
-
-↓
-
-"Ada apa?"
-
-Swipe
-
-↓
-
-Kepala ikut bergerak
-
-11. Emotion Engine
-
-Emotion
-
-↓
-
-Animation
-
-↓
-
-Voice
-
-↓
-
-Light
-
-↓
-
-Particle
-
-↓
-
-Music
-
-Semua sinkron.
-
-12. Memory Design
-
-Memory berupa:
-
-Foto
-
-Tempat
-
-Film
-
-Teman
-
-Keluarga
-
-Target
-
-Hari penting
-
-Semua divisualisasikan.
-
-13. Friendship
-
-Level
-
-1–100
-
-Relationship
-
-Stranger
-
-Friend
-
-Best Friend
-
-Soul Friend
-
-Family
-
-Legend
-
-14. Virtual Room System
-
-Inilah pembeda terbesar.
-
-Default
-
-🏡 Cozy Room
-
-Unlock
-
-📚 Study
-
-🌲 Forest
-
-🌸 Japan
-
-🌊 Ocean
-
-🚀 Space
-
-☁️ Sky
-
-🎮 Gaming
-
-🏰 Fantasy
-
-🧪 AI Lab
-
-Semua hidup.
-
-Lampu.
-
-TV.
-
-Hujan.
-
-Burung.
-
-Jam.
-
-Tanaman.
-
-15. Background AI
-
-Momo tetap hidup.
-
-Misalnya
-
-User diam
-
-↓
-
-Momo lihat hujan
-
-↓
-
-Minum kopi
-
-↓
-
-Lihat user
-
-↓
-
-Smile
-16. Companion Mode
-
-Saat HP sedang charging
-
-↓
-
-Momo duduk.
-
-Main.
-
-Tidur.
-
-Nyanyi.
-
-Bermain drone.
-
-Membaca.
-
-17. Camera Mode
-
-Kamera depan
-
-↓
-
-Momo melihat wajah user
-
-↓
-
-Ikut senyum
-
-↓
-
-Ikut mengangguk
-
-18. AR Mode
-
-Momo:
-
-jalan
-
-lari
-
-duduk
-
-lompat
-
-foto
-
-video
-
-interaksi meja
-
-interaksi kursi
-
-19. Avatar Evolution
-
-Level naik.
-
-↓
-
-Animasi bertambah.
-
-↓
-
-Room bertambah.
-
-↓
-
-Gesture bertambah.
-
-↓
-
-Efek bertambah.
-
-↓
-
-Aksesori bertambah.
-
-Tetapi wajah utama tetap sama agar identitas Momo selalu terjaga.
-
-20. AI Brain
-User
-
-↓
-
-Speech
-
-↓
-
-AI
-
-↓
-
-Memory
-
-↓
-
-Emotion
-
-↓
-
-Animation
-
-↓
-
-Voice
-
-↓
-
-Screen Effect
-
-↓
-
-Response
-21. Design Principles
-
-Setiap keputusan desain harus memenuhi prinsip berikut:
-
-Alive — Momo tidak pernah terasa diam atau "mati".
-Friendly — Semua ekspresi mengundang interaksi.
-Simple — Fokus utama selalu pada karakter, bukan UI.
-Expressive — Emosi terlihat jelas hanya dari mata, alis, dan gerakan kecil.
-Comforting — Warna, suara, dan animasi memberikan rasa nyaman.
-Consistent — Identitas visual dan perilaku tetap konsisten di seluruh aplikasi.
-Personal — Semakin lama digunakan, Momo semakin mengenal penggunanya.
-22. Momo Ecosystem (Roadmap Jangka Panjang)
-
+# Momo AI Mobile App - Flutter
+
+Aplikasi mobile AI Companion yang dibangun dengan Flutter, terintegrasi dengan Momo AI Backend API.
+
+## 🎯 Overview
+
+**Momo** adalah aplikasi mobile yang memungkinkan pengguna berinteraksi dengan AI companion yang ramah, cerdas, dan personal. Aplikasi menggunakan:
+
+- **Framework**: Flutter (Dart 3+)
+- **State Management**: Riverpod
+- **Architecture**: Feature-First + Clean Architecture
+- **API**: Momo AI Backend (.NET 8+)
+- **Design**: Bright Daytime Glassmorphism
+
+## 📋 Table of Contents
+
+1. [Project Structure](#project-structure)
+2. [Setup & Installation](#setup--installation)
+3. [Development](#development)
+4. [Build & Deployment](#build--deployment)
+5. [Architecture](#architecture)
+6. [API Integration](#api-integration)
+7. [Contributing](#contributing)
+
+## 📁 Project Structure
+
+```
+lib/
+├── app/                           # App configuration
+│   ├── app.dart                  # Main app widget
+│   ├── router.dart               # Go Router configuration
+│   └── theme/
+│       ├── momo_design_system.dart    # Colors, typography, spacing, radius, shadows
+│       └── momo_theme.dart            # Material 3 theme configuration
+│
+├── core/                          # Core utilities shared across features
+│   ├── config/
+│   │   └── env_config.dart       # Environment configuration (.env)
+│   ├── constants/
+│   │   └── app_constants.dart    # App constants, endpoints, error messages
+│   ├── errors/
+│   │   ├── exceptions.dart       # Custom exception types
+│   │   └── result.dart           # Result<T> type for error handling
+│   ├── models/
+│   │   └── base_models.dart      # Base models (User, ChatMessage, etc)
+│   ├── network/
+│   │   └── api_client.dart       # Dio-based API client with interceptors
+│   ├── providers/
+│   │   └── core_providers.dart   # Riverpod providers for core services
+│   ├── storage/
+│   │   └── secure_storage_service.dart  # JWT token & secure data storage
+│   ├── utils/
+│   │   └── responsive_helper.dart       # Responsive layout utilities
+│   └── widgets/
+│       └── momo_glass_widgets.dart      # Reusable glassmorphism widgets
+│
+├── features/
+│   ├── home/                      # Home feature (Phase 1)
+│   │   ├── data/                 # Data layer (Models, API, Repository impl)
+│   │   ├── domain/               # Domain layer (Entities, Use cases)
+│   │   └── presentation/
+│   │       ├── pages/
+│   │       │   └── momo_home_page.dart
+│   │       ├── widgets/
+│   │       │   ├── status_area.dart
+│   │       │   ├── greeting_and_favorite.dart
+│   │       │   ├── momo_robot.dart
+│   │       │   ├── voice_controls.dart
+│   │       │   └── feature_navigation.dart
+│   │       └── providers/
+│   │           └── home_providers.dart   # Riverpod providers
+│   │
+│   ├── chat/                      # Chat feature (Phase 2)
+│   ├── voice/                     # Voice feature (Phase 4)
+│   ├── mission/                   # Mission feature (Phase 3)
+│   ├── mood/                      # Mood feature (Phase 3)
+│   ├── music/                     # Music feature (Phase 4)
+│   ├── profile/                   # Profile feature (Phase 3)
+│   └── memory/                    # Memory feature (Phase 3)
+│
+└── main.dart                      # App entry point
+```
+
+## 🚀 Setup & Installation
+
+### Prerequisites
+
+- Flutter stable (latest version)
+- Dart 3.0+
+- Android Studio / Xcode
+- Momo AI Backend API running
+
+### Installation Steps
+
+1. **Clone repository**
+```bash
+git clone <repository-url>
+cd momo-mobile
+```
+
+2. **Install dependencies**
+```bash
+flutter pub get
+```
+
+3. **Setup environment files**
+```bash
+# Salinan dari template atau buat sendiri
+cp .env.dev.example .env.dev
+cp .env.staging.example .env.staging
+cp .env.prod.example .env.prod
+```
+
+Edit `.env.dev`:
+```env
+API_BASE_URL=http://10.0.2.2:5000
+LIVEKIT_URL=ws://10.0.2.2:7880
+LIVEKIT_API_KEY=devkey
+LIVEKIT_API_SECRET=devsecret
+ENVIRONMENT=development
+LOG_LEVEL=debug
+```
+
+4. **Run code generation** (untuk freezed, json_serializable, dll)
+```bash
+flutter pub run build_runner build
+```
+
+5. **Run app**
+```bash
+# Development
+flutter run
+
+# Dengan specific device
+flutter run -d <device-id>
+```
+
+## 💻 Development
+
+### Project Phases
+
+**Phase 1** ✅ - UI/Theme/Design System (COMPLETED)
+- Flutter project setup
+- Design system (colors, typography, spacing, radius, shadows)
+- Glassmorphism components
+- Home screen layout dan components
+- Responsive design
+
+**Phase 2** - API Layer & Authentication
+- API client dengan Dio
+- Authentication flow
+- JWT token management
+- User profile fetching
+- Conversation API
+
+**Phase 3** - Chat & State Management
+- Riverpod providers setup
+- Chat state machine
+- Message repository & use cases
+- Chat page UI
+- Message streaming with SSE
+
+**Phase 4** - Features Integration (Memory, Mood, Mission, XP, Relationship)
+- User profile data
+- Memory feature
+- Mood tracking
+- Mission system
+- XP/Level system
+- Relationship progress
+
+**Phase 5** - Voice & Advanced Features
+- LiveKit integration
+- Voice recording & streaming
+- Camera integration
+- Music feature
+- Analytics service
+- Offline cache (Isar)
+- Performance optimization
+
+### Architecture Pattern
+
+Menggunakan **Clean Architecture** dengan **Feature-First** approach:
+
+```
+Presentation (UI) 
+    ↓
+State Management (Riverpod)
+    ↓
+Use Case / Notifier
+    ↓
+Repository (Interface)
+    ↓
+Data Sources (API/Local)
+```
+
+### Adding New Feature
+
+1. **Create feature folder**: `lib/features/new_feature/`
+2. **Create layers**:
+   - `presentation/pages/` - UI pages
+   - `presentation/widgets/` - Reusable widgets
+   - `presentation/providers/` - Riverpod providers
+   - `data/datasources/` - API & local data access
+   - `data/repositories/` - Repository implementation
+   - `data/models/` - Data models
+   - `domain/repositories/` - Abstract repository
+   - `domain/entities/` - Domain entities
+   - `domain/usecases/` - Business logic
+
+3. **Follow naming conventions**:
+   - Pages: `*_page.dart`
+   - Widgets: `*_widget.dart`
+   - Providers: `*_provider.dart`
+   - Models: `*_model.dart`
+   - Entities: `*_entity.dart`
+
+### Widget Best Practices
+
+- Gunakan **StatelessWidget** sebanyak mungkin
+- Untuk state, gunakan **Riverpod** (StateNotifier, FutureProvider, etc)
+- Hindari **setState()** untuk global state
+- setState() hanya untuk local widget state yang simple
+- Pisahkan UI dari business logic
+
+### Theme & Design System
+
+Semua warna, typography, spacing dideklarasikan di:
+- `lib/core/theme/momo_design_system.dart`
+- `lib/core/theme/momo_theme.dart`
+
+**Jangan hardcode** warna atau spacing di widget.
+
+### API Integration
+
+1. **Define endpoint** di `AppEndpoints`
+2. **Create API data source**:
+```dart
+abstract class UserDataSource {
+  Future<User> getUser();
+}
+
+class UserDataSourceImpl implements UserDataSource {
+  final ApiClient apiClient;
+  
+  @override
+  Future<User> getUser() async {
+    final response = await apiClient.get('/users/me');
+    return User.fromJson(response);
+  }
+}
+```
+
+3. **Create repository**:
+```dart
+abstract class UserRepository {
+  Future<Result<User>> getUser();
+}
+
+class UserRepositoryImpl implements UserRepository {
+  final UserDataSource dataSource;
+  
+  @override
+  Future<Result<User>> getUser() async {
+    try {
+      final user = await dataSource.getUser();
+      return Success(user);
+    } catch (e) {
+      return Failure(exception: e, message: e.toString());
+    }
+  }
+}
+```
+
+4. **Create provider** (di `presentation/providers/`):
+```dart
+final userProvider = FutureProvider<User>((ref) async {
+  final repository = ref.watch(userRepositoryProvider);
+  return repository.getUser();
+});
+```
+
+5. **Use in widget**:
+```dart
+class UserWidget extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userAsync = ref.watch(userProvider);
+    
+    return userAsync.when(
+      data: (user) => Text(user.name),
+      loading: () => const CircularProgressIndicator(),
+      error: (err, st) => Text('Error: $err'),
+    );
+  }
+}
+```
+
+## 🏗️ Build & Deployment
+
+### Build APK (Android)
+```bash
+flutter build apk --release
+# Output: build/app/outputs/flutter-app.apk
+```
+
+### Build AAB (Android App Bundle)
+```bash
+flutter build appbundle --release
+```
+
+### Build IPA (iOS)
+```bash
+flutter build ipa --release
+```
+
+### Flavors (untuk multiple environments)
+
+Konfigurasi di `pubspec.yaml` dan android/ios build files:
+
+```bash
+# Development
+flutter run --flavor dev -t lib/main_dev.dart
+
+# Staging
+flutter run --flavor staging -t lib/main_staging.dart
+
+# Production
+flutter run --flavor prod -t lib/main_prod.dart
+```
+
+## 🔌 API Integration
+
+### Environment Configuration
+
+Edit `.env.dev`, `.env.staging`, `.env.prod`:
+
+```env
+API_BASE_URL=<your-api-url>
+LIVEKIT_URL=<your-livekit-url>
+LIVEKIT_API_KEY=<your-livekit-api-key>
+LIVEKIT_API_SECRET=<your-livekit-api-secret>
+```
+
+### Chat Streaming (SSE)
+
+```dart
+final chatStreamProvider = StreamProvider<ChatEvent>((ref) {
+  final repository = ref.watch(chatRepositoryProvider);
+  return repository.sendMessage(
+    message: 'Hello Momo',
+    stream: true,
+  );
+});
+```
+
+### LiveKit Integration
+
+```dart
+final liveKitProvider = Provider<LiveKitClient>((ref) {
+  return LiveKitClient(
+    wsUrl: EnvConfig.liveKitUrl,
+    token: 'livekit-token-from-backend',
+  );
+});
+```
+
+## 📱 Supported Platforms
+
+- **Android**: 11+ (API level 30+)
+- **iOS**: 16.0+
+
+## 🔒 Security
+
+### JWT Token Management
+- Token disimpan di **Secure Storage** (tidak di SharedPreferences)
+- Token otomatis attached ke setiap API request
+- Token refresh implementation via interceptor
+
+### Sensitive Data
+- Jangan hardcode API keys, secrets di source code
+- Gunakan `.env` files
+- Never commit `.env` ke repository
+
+### API Security
+- HTTPS only di production
+- Certificate pinning (optional)
+- Request signing (optional)
+
+## 📊 Performance Optimization
+
+- Lazy loading images dengan `cached_network_image`
+- Minimize rebuilds dengan `Consumer` / `ConsumerWidget`
+- Use `const` constructors untuk immutable widgets
+- Dispose resources (controllers, listeners)
+- Avoid unnecessary BackdropFilter (expensive)
+- 60 FPS target
+
+## 🧪 Testing
+
+```bash
+# Unit tests
+flutter test
+
+# Integration tests
+flutter drive --target=test_driver/app.dart
+```
+
+## 📚 Dependencies
+
+Key dependencies:
+- `flutter_riverpod` - State management
+- `go_router` - Routing
+- `dio` - HTTP client
+- `flutter_secure_storage` - Secure token storage
+- `isar` - Local database
+- `livekit_client` - Voice/WebRTC
+- `cached_network_image` - Image caching
+- `freezed_annotation` - Code generation
+- `json_annotation` - JSON serialization
+
+## 🔗 Links
+
+- [Momo AI Backend](../momo-api)
+- [Flutter Documentation](https://flutter.dev)
+- [Riverpod Documentation](https://riverpod.dev)
+- [LiveKit Documentation](https://docs.livekit.io)
+
+## 📝 License
+
+Proprietary - Momo AI Project
+
+## 👥 Contributors
+
+See `CONTRIBUTORS.md`
+
+## 📞 Support
+
+Untuk pertanyaan dan issues, buka GitHub issue atau hubungi tim development.
