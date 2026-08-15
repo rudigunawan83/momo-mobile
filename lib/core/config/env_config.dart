@@ -13,9 +13,20 @@ class EnvConfig {
   static Future<void> init({String environment = 'development'}) async {
     _environment = environment;
 
-    // Load environment file
-    final envFile = '.env.$environment';
-    await dotenv.load(fileName: envFile);
+    // Map environment name → file name
+    // 'development' → '.env.dev', 'staging' → '.env.staging', 'production' → '.env.prod'
+    final envFile = switch (environment) {
+      'development' => '.env.dev',
+      'staging' => '.env.staging',
+      'production' => '.env.prod',
+      _ => '.env.$environment',
+    };
+
+    try {
+      await dotenv.load(fileName: envFile, mergeWith: {});
+    } catch (_) {
+      // File tidak ditemukan — pakai fallback values dari dart-define atau default
+    }
 
     _apiBaseUrl = dotenv.get('API_BASE_URL', fallback: 'http://localhost:5000');
     _liveKitUrl = dotenv.get('LIVEKIT_URL', fallback: 'ws://localhost:7880');
