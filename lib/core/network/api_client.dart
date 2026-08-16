@@ -190,12 +190,28 @@ class ApiClient {
     }
   }
 
-  /// Handle response
+  /// Handle response — unwraps ApiResponse envelope {"success":true,"data":{...}}
   T _handleResponse<T>(Response<dynamic> response) {
     final statusCode = response.statusCode ?? 200;
 
     if (statusCode >= 200 && statusCode < 300) {
-      return response.data as T;
+      final body = response.data;
+
+      // Unwrap ApiResponse envelope: {"success": true, "data": {...}}
+      if (body is Map<String, dynamic> && body.containsKey('data') && body.containsKey('success')) {
+        if (body['success'] == true) {
+          return body['data'] as T;
+        } else {
+          final errors = (body['errors'] as List?)?.join(', ') ?? body['message'] ?? 'Unknown error';
+          throw ServerException(
+            message: errors.toString(),
+            statusCode: statusCode,
+            originalException: body,
+          );
+        }
+      }
+
+      return body as T;
     }
 
     throw ServerException(

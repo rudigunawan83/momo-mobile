@@ -48,92 +48,67 @@ class ChatRemoteDataSourceImpl implements ChatRemoteDataSource {
     bool stream = true,
   }) async* {
     try {
-      final dio = apiClient.dio;
+      // Emit message_start
+      final messageId = DateTime.now().millisecondsSinceEpoch.toString();
+      yield ChatMessageStart(
+        messageId: messageId,
+        conversationId: conversationId,
+      );
 
-      // Request body sesuai StreamMessageRequest di API
-      final requestData = {
-        'conversationId': conversationId,
-        'message': message,
-        // userId dikosongkan — server pakai dev fallback atau extract dari JWT
-      };
-
-      // POST ke /api/chat/stream — SSE endpoint
-      final response = await dio.post(
-        ApiEndpoints.chatStream, // '/chat/stream'
-        data: requestData,
+      // Call non-streaming /chat/message — more reliable than SSE on Android
+      final response = await apiClient.post<Map<String, dynamic>>(
+        ApiEndpoints.chatMessage, // '/chat/message'
+        data: {
+          'conversationId': conversationId,
+          'message': message,
+          'conversationType': 'Text',
+        },
         options: Options(
-          responseType: ResponseType.stream,
-          headers: {'Accept': 'text/event-stream'},
+          // 40s — server has 30s AI timeout + processing overhead
+          receiveTimeout: const Duration(seconds: 40),
+          sendTimeout: const Duration(seconds: 10),
         ),
       );
 
-      if (response.statusCode != 200) {
-        throw ServerException(
-          message: 'Failed to send message',
-          statusCode: response.statusCode,
-        );
+      final text = response['message'] as String? ??
+          response['text'] as String? ??
+          'Hmm, Momo lagi butuh istirahat sebentar. Coba lagi ya! 🤗';
+
+      final emotion = response['emotion'] as String? ?? 'neutral';
+      final xpGained = response['xpGained'] as int? ?? 0;
+      final levelUp = response['levelUp'] as bool? ?? false;
+
+      // Simulate word-by-word streaming client-side
+      final words = text.split(' ');
+      for (final word in words) {
+        yield ChatToken('$word ');
+        await Future.delayed(const Duration(milliseconds: 40));
       }
 
-      // Parse SSE stream
-      final sseStream = response.data.stream as Stream<List<int>>;
-      String buffer = '';
-
-      await for (final chunk in sseStream) {
-        buffer += utf8.decode(chunk);
-        
-        // Split by newlines untuk parse events
-        final lines = buffer.split('\n');
-        buffer = lines.last; // Keep incomplete line for next iteration
-
-        for (int i = 0; i < lines.length - 1; i++) {
-          final line = lines[i].trim();
-          
-          if (line.isEmpty) continue;
-
-          // Parse event: ...
-          if (line.startsWith('event:')) {
-            final eventType = line.substring(6).trim();
-            
-            // Next line should be data: ...
-            if (i + 1 < lines.length - 1) {
-              final dataLine = lines[i + 1];
-              if (dataLine.startsWith('data:')) {
-                final jsonStr = dataLine.substring(5).trim();
-                try {
-                  final jsonData = jsonDecode(jsonStr) as Map<String, dynamic>;
-                  
-                  // Parse different event types
-                  yield _parseEvent(eventType, jsonData);
-                  
-                  i++; // Skip data line
-                } catch (e) {
-                  yield ChatStreamError(
-                    message: 'Failed to parse event data',
-                    exception: e as Exception,
-                  );
-                }
-              }
-            }
-          }
-        }
-      }
+      // Emit complete
+      yield ChatMessageComplete(
+        messageId: messageId,
+        fullContent: text,
+        metadata: {
+          'emotion': emotion,
+          'xpGained': xpGained,
+          'levelUp': levelUp,
+        },
+      );
     } on TimeoutException catch (e) {
-      yield ChatStreamError(
-        message: 'Stream timeout',
-        exception: e,
-      );
+      yield ChatStreamError(message: 'Koneksi timeout', exception: e);
     } on NetworkException catch (e) {
-      yield ChatStreamError(
-        message: 'Network error',
-        exception: e,
-      );
+      yield ChatStreamError(message: 'Network error', exception: e);
+    } on ServerException catch (e) {
+      yield ChatStreamError(message: e.message, exception: e);
     } catch (e) {
       yield ChatStreamError(
-        message: 'Stream error: $e',
-        exception: e as Exception,
+        message: 'Terjadi kesalahan: $e',
+        exception: e is Exception ? e : Exception(e.toString()),
       );
     }
   }
+
 
   ChatStreamEvent _parseEvent(String eventType, Map<String, dynamic> data) {
     switch (eventType) {

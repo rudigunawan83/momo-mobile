@@ -22,7 +22,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil profil pengguna',
       );
     }
@@ -40,7 +40,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil data pengguna',
       );
     }
@@ -58,7 +58,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal update profil',
       );
     }
@@ -76,7 +76,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil data XP',
       );
     }
@@ -94,7 +94,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil data relationship',
       );
     }
@@ -112,7 +112,7 @@ class UserRepositoryImpl implements UserRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil mood',
       );
     }

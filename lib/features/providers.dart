@@ -103,17 +103,24 @@ class AuthStateNotifier extends StateNotifier<AsyncValue<AuthResponse?>> {
 
   Future<void> login(String email, String password) async {
     state = const AsyncValue.loading();
-    final result = await loginUseCase(email: email, password: password);
-
-    result.map(
-      (success) {
-        tokenNotifier.setToken(success.accessToken);
-        state = AsyncValue.data(success);
-      },
-      (failure) {
-        state = AsyncValue.error(failure.exception, StackTrace.current);
-      },
-    );
+    try {
+      final result = await loginUseCase(email: email, password: password);
+      result.map(
+        (success) {
+          tokenNotifier.setToken(success.accessToken);
+          state = AsyncValue.data(success);
+        },
+        (failure) {
+          // Keep error in state but don't throw — prevents unhandled exception crash
+          state = AsyncValue.data(null);
+          // Re-expose error via a separate mechanism if needed
+          throw failure.exception;
+        },
+      );
+    } catch (e, st) {
+      state = AsyncValue.data(null); // Stay on login page, don't crash app
+      rethrow; // Let the UI layer catch and show error message
+    }
   }
 
   Future<void> logout() async {
@@ -157,10 +164,11 @@ final authStateProvider =
   );
 });
 
-/// Is Authenticated Provider
+/// Is Authenticated Provider — safely handles loading/error states
 final isAuthenticatedProvider = Provider<bool>((ref) {
   final authState = ref.watch(authStateProvider);
-  return authState.whenData((data) => data != null).value ?? false;
+  // Use whenOrNull to avoid throwing on error state
+  return authState.whenOrNull(data: (data) => data != null) ?? false;
 });
 
 // ===== USER PROVIDERS =====
@@ -198,34 +206,41 @@ final getGreetingUseCaseProvider = Provider<GetGreetingUseCase>((ref) {
   return GetGreetingUseCase(repository: ref.watch(userRepositoryProvider));
 });
 
-/// Current User Provider
-final currentUserProvider = FutureProvider<UserProfileDto>((ref) async {
+/// Current User Provider — returns null instead of throwing on error
+final currentUserProvider = FutureProvider<UserProfileDto?>((ref) async {
+  // Only fetch when authenticated
+  final isAuth = ref.watch(isAuthenticatedProvider);
+  if (!isAuth) return null;
   final useCase = ref.watch(getCurrentUserUseCaseProvider);
   final result = await useCase();
   return result.map(
     (data) => data,
-    (failure) => throw failure.exception,
+    (_) => null, // silently return null on failure
   );
 });
 
-/// Current XP Provider
-final currentXpProvider = FutureProvider<XpProfileDto>((ref) async {
+/// Current XP Provider — returns default on error
+final currentXpProvider = FutureProvider<XpProfileDto?>((ref) async {
+  final isAuth = ref.watch(isAuthenticatedProvider);
+  if (!isAuth) return null;
   final useCase = ref.watch(getXpProfileUseCaseProvider);
   final result = await useCase();
   return result.map(
     (data) => data,
-    (failure) => throw failure.exception,
+    (_) => null,
   );
 });
 
-/// Current Relationship Provider
+/// Current Relationship Provider — returns default on error
 final currentRelationshipProvider =
-    FutureProvider<RelationshipDto>((ref) async {
+    FutureProvider<RelationshipDto?>((ref) async {
+  final isAuth = ref.watch(isAuthenticatedProvider);
+  if (!isAuth) return null;
   final useCase = ref.watch(getRelationshipUseCaseProvider);
   final result = await useCase();
   return result.map(
     (data) => data,
-    (failure) => throw failure.exception,
+    (_) => null,
   );
 });
 

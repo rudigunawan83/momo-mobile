@@ -127,9 +127,11 @@ class Conversation {
   factory Conversation.fromJson(Map<String, dynamic> json) {
     return Conversation(
       id: json['id'] as String,
-      userId: json['userId'] as String,
-      title: json['title'] as String,
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      userId: json['userId'] as String? ?? '',
+      title: json['title'] as String? ?? 'Percakapan baru',
+      createdAt: json['createdAt'] != null
+          ? DateTime.parse(json['createdAt'] as String)
+          : DateTime.now(),
       updatedAt: json['updatedAt'] != null
           ? DateTime.parse(json['updatedAt'] as String)
           : null,

@@ -55,7 +55,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Terjadi kesalahan. Coba lagi.',
       );
     }
@@ -77,7 +77,7 @@ class AuthRepositoryImpl implements AuthRepository {
     } catch (e) {
       await secureStorage.logout();
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Logout berhasil',
       );
     }
@@ -108,7 +108,7 @@ class AuthRepositoryImpl implements AuthRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal refresh token',
       );
     }

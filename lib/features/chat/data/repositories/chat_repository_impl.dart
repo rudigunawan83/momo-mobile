@@ -48,7 +48,7 @@ class ChatRepositoryImpl implements ChatRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil conversation',
       );
     }
@@ -67,7 +67,7 @@ class ChatRepositoryImpl implements ChatRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal membuat conversation',
       );
     }
@@ -96,7 +96,7 @@ class ChatRepositoryImpl implements ChatRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal mengambil conversations',
       );
     }
@@ -114,7 +114,7 @@ class ChatRepositoryImpl implements ChatRepository {
       );
     } catch (e) {
       return Failure(
-        exception: e as Exception,
+        exception: e is Exception ? e : Exception(e.toString()),
         message: 'Gagal delete conversation',
       );
     }

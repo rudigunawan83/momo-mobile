@@ -93,7 +93,9 @@ class ProfilePage extends ConsumerWidget {
                       children: [
                         // User card
                         userAsync.when(
-                          data: (user) => _buildUserCard(user),
+                          data: (user) => user != null
+                              ? _buildUserCard(user)
+                              : _buildSkeletonCard(height: 160),
                           loading: () => _buildSkeletonCard(height: 160),
                           error: (_, __) => _buildErrorCard('Gagal memuat profil'),
                         ),
@@ -102,7 +104,9 @@ class ProfilePage extends ConsumerWidget {
 
                         // XP & Level card
                         xpAsync.when(
-                          data: (xp) => _buildXpCard(xp),
+                          data: (xp) => xp != null
+                              ? _buildXpCard(xp)
+                              : const SizedBox.shrink(),
                           loading: () => _buildSkeletonCard(height: 120),
                           error: (_, __) => const SizedBox.shrink(),
                         ),
@@ -111,7 +115,9 @@ class ProfilePage extends ConsumerWidget {
 
                         // Relationship card
                         relationshipAsync.when(
-                          data: (rel) => _buildRelationshipCard(rel),
+                          data: (rel) => rel != null
+                              ? _buildRelationshipCard(rel)
+                              : const SizedBox.shrink(),
                           loading: () => _buildSkeletonCard(height: 120),
                           error: (_, __) => const SizedBox.shrink(),
                         ),
