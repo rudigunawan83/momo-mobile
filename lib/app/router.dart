@@ -4,6 +4,10 @@ import 'package:go_router/go_router.dart';
 import '../features/home/presentation/pages/momo_home_page.dart';
 import '../features/auth/presentation/pages/login_page.dart';
 import '../features/chat/presentation/pages/chat_page.dart';
+import '../features/memory/presentation/pages/memory_page.dart';
+import '../features/mood/presentation/pages/mood_page.dart';
+import '../features/mission/presentation/pages/mission_page.dart';
+import '../features/profile/presentation/pages/profile_page.dart';
 import '../features/providers.dart';
 
 // ===== RouterNotifier =====
@@ -75,13 +79,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: 'missions',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Misi'),
+            builder: (context, state) => const MissionPage(),
           ),
           GoRoute(
             path: 'mood',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Mood'),
+            builder: (context, state) => const MoodPage(),
           ),
           GoRoute(
             path: 'music',
@@ -90,13 +92,11 @@ final goRouterProvider = Provider<GoRouter>((ref) {
           ),
           GoRoute(
             path: 'profile',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Profil'),
+            builder: (context, state) => const ProfilePage(),
           ),
           GoRoute(
             path: 'memory',
-            builder: (context, state) =>
-                const _PlaceholderPage(title: 'Memori Momo'),
+            builder: (context, state) => const MemoryPage(),
           ),
           GoRoute(
             path: 'settings',

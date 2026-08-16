@@ -165,6 +165,31 @@ class ApiClient {
     }
   }
 
+  /// PATCH request
+  Future<T> patch<T>(
+    String path, {
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+  }) async {
+    try {
+      final response = await _dio.patch<dynamic>(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+      );
+      return _handleResponse<T>(response);
+    } on DioException catch (e) {
+      throw _handleException(e);
+    } catch (e) {
+      throw GenericException(
+        message: 'Unexpected error',
+        originalException: e,
+      );
+    }
+  }
+
   /// Handle response
   T _handleResponse<T>(Response<dynamic> response) {
     final statusCode = response.statusCode ?? 200;
