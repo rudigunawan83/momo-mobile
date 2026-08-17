@@ -49,6 +49,8 @@ class ApiEndpoints {
 
   // Mood
   static const String mood = '/mood';
+  static const String moodCurrent = '/mood/current';  // GET current mood
+  static const String moodHistory = '/mood/history';   // GET mood history
 
   // Mission
   static const String missions = '/missions';
@@ -90,3 +92,4 @@ class AppDurations {
   static const Duration snackBarDuration = Duration(seconds: 3);
   static const Duration dialogDuration = Duration(seconds: 2);
 }
+

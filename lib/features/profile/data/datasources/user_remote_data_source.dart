@@ -95,7 +95,7 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
   Future<String?> getCurrentMood() async {
     try {
       final response = await apiClient.get<Map<String, dynamic>>(
-        ApiEndpoints.mood,
+        ApiEndpoints.moodCurrent,
       );
       return response['mood'] as String?;
     } catch (e) {
@@ -103,3 +103,4 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
     }
   }
 }
+

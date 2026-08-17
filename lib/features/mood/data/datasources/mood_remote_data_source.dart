@@ -22,7 +22,7 @@ class MoodRemoteDataSourceImpl implements MoodRemoteDataSource {
   @override
   Future<MoodRecord?> getCurrentMood() async {
     try {
-      final response = await apiClient.get<dynamic>(ApiEndpoints.mood);
+      final response = await apiClient.get<dynamic>(ApiEndpoints.moodCurrent);
       final data = response.data;
       if (data == null) return null;
       if (data is Map<String, dynamic>) {
@@ -42,7 +42,7 @@ class MoodRemoteDataSourceImpl implements MoodRemoteDataSource {
   Future<List<MoodRecord>> getMoodHistory({int days = 7}) async {
     try {
       final response = await apiClient.get<dynamic>(
-        '${ApiEndpoints.mood}/history',
+        ApiEndpoints.moodHistory,
         queryParameters: {'days': days},
       );
 
@@ -87,3 +87,5 @@ class MoodRemoteDataSourceImpl implements MoodRemoteDataSource {
     }
   }
 }
+
+
